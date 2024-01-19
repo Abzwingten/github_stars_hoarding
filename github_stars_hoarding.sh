@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+cd ../"$(dirname "$0")"
 user="$1"
 user="$github_username"
 pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^link:.*page=([0-9]+).*/\1/p')
