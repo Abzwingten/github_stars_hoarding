@@ -12,8 +12,7 @@ per_page=30
 
 set -eou pipefail
 cd "$(dirname "$0")"
-FOO=${VARIABLE:=default}
-user=${$1:=Abzwingten}
+user="${1:-Abzwingten}"
 echo -e "${red_bg}${reset}"
 echo -e "${blue}Welcome to github stars downloader!${reset}"
 pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^Link:.*page=([0-9]+).*/\1/p')
