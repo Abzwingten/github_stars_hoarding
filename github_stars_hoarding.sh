@@ -22,7 +22,7 @@ echo "starting download"
 cloned=0
 pulled=0
 for page in $(seq 1 $pages); do
-    curl "https://api.github.com/users/$user/starred?page=$page&per_page=$per_page" |   jq -r '.[].html_url' | \:
+    curl "https://api.github.com/users/$user/starred?page=$page&per_page=$per_page" |   jq -r '.[].html_url' | \
         while read rp; do
                 rp_name=${rp##*/}
                 echo  "URL: $rp"
