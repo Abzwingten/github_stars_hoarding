@@ -5,6 +5,7 @@ user="$1"
 #user="Abzwingten"
 pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^Link:.*page=([0-9]+).*/\1/p')
 echo $pages
+echo "starting download"
 cloned=0
 pulled=0
 for page in $(seq 1 $pages); do
