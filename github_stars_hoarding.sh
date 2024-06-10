@@ -12,13 +12,13 @@ per_page=30
 
 set -eou pipefail
 cd "$(dirname "$0")"
-user="Abzwingten"
-user="$1"
+FOO=${VARIABLE:=default}
+user=${$1:=Abzwingten}
 echo -e "${red_bg}${reset}"
 echo -e "${blue}Welcome to github stars downloader!${reset}"
 pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^Link:.*page=([0-9]+).*/\1/p')
 repolist_appr=$(expr $per_page \* $pages)
-echo "${blue}${uline}$pages${reset} pages of repos about to be synced"
+echo "${blue}${uline} $pages ${reset} pages of repos about to be synced"
 echo "starting download"
 cloned=0
 pulled=0
@@ -39,7 +39,7 @@ for page in $(seq 1 $pages); do
                 fi
         done
 done
-echo "Cloned ${bold}$cloned${reset} repos"
-echo "Pulled ${bold}$pulled${reset} repos"
+echo "Cloned ${bold} $cloned ${reset} repos"
+echo "Pulled ${bold} $pulled ${reset} repos"
 echo -e "${red_bg}${reset}"
 echo -e "${blue}DONE!${reset}"
