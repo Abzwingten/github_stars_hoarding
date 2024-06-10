@@ -3,7 +3,7 @@
 cd "$(dirname "$0")"
 user="$1"
 #user="Abzwingten"
-pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^link:.*page=([0-9]+).*/\1/p')
+pages=$(curl -I https://api.github.com/users/$user/starred | sed -nr 's/^Link:.*page=([0-9]+).*/\1/p')
 echo $pages
 cloned=0
 pulled=0
